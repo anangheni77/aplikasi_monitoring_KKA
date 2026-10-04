@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aplikasi Monitoring Pelatihan Koding dan Kecerdasan Artifisial - BBGTK DIY</title>
+<style>
+:root{--b9:#0b2a5b;--b7:#1459c7;--b5:#2f80ed;--b2:#dbeafe;--b1:#eff6ff;--tx:#0f1f3d;--mu:#5b6b86;--bd:#dbe4f3;--bg:#f3f7fd;--ok:#12a150;--wa:#e8590c;--card:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+header{background:linear-gradient(135deg,var(--b9),var(--b7) 60%,var(--b5));color:#fff;padding:26px 20px 70px;text-align:center}
+header .l1{font-size:15px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+header .l2{font-size:clamp(20px,3.4vw,32px);font-weight:800;margin:4px 0}
+header .l3{display:inline-block;margin-top:6px;background:rgba(255,255,255,.18);padding:4px 16px;border-radius:99px;font-weight:700;letter-spacing:.08em}
+main{max-width:1280px;margin:-48px auto 40px;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;box-shadow:0 6px 20px rgba(20,89,199,.08);padding:16px;margin-bottom:16px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.f{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--mu);font-weight:600}
+.f.grow{flex:1;min-width:220px}
+input,select{font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:#fff;color:var(--tx);min-width:150px}
+input:focus,select:focus{outline:2px solid var(--b5);border-color:transparent}
+button,.btn{font:inherit;font-size:13px;font-weight:600;padding:10px 14px;border-radius:10px;border:1px solid var(--b7);background:var(--b7);color:#fff;cursor:pointer}
+button.alt,.btn.alt{background:#fff;color:var(--b7)}button:hover{filter:brightness(1.08)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center}
+.chip{padding:6px 12px;border-radius:99px;border:1px solid var(--bd);background:var(--b1);color:var(--b7);font-size:13px;font-weight:600;cursor:pointer}
+.chip.on{background:var(--b7);color:#fff;border-color:var(--b7)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px 16px;border-left:5px solid var(--b5)}
+.kpi small{color:var(--mu);font-weight:600;font-size:12px}.kpi b{display:block;font-size:28px;color:var(--b9);margin-top:2px}.kpi span{font-size:12px;color:var(--mu)}
+h2{font-size:16px;margin:0 0 12px;color:var(--b9)}
+.sr{display:grid;grid-template-columns:70px 1fr 190px;gap:10px;align-items:center;padding:7px 8px;border-radius:10px;cursor:pointer;font-size:13px}
+.sr:hover{background:var(--b1)}.sr b{color:var(--b7)}.trk{height:12px;background:var(--b2);border-radius:99px;overflow:hidden}.trk i{display:block;height:100%;background:linear-gradient(90deg,var(--b5),var(--b7));border-radius:99px}
+.sr em{font-style:normal;color:var(--mu);font-size:12px;text-align:right}
+.tw{overflow:auto;max-height:70vh;border:1px solid var(--bd);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{position:sticky;top:0;background:var(--b9);color:#fff;text-align:left;padding:10px;white-space:nowrap;z-index:1}
+td{padding:9px 10px;border-top:1px solid var(--bd);vertical-align:top}
+tbody tr{cursor:pointer}tbody tr:hover{background:var(--b1)}
+.n{font-weight:700;color:var(--b9)}.s{color:var(--mu);font-size:12px}.c{text-align:center;white-space:nowrap}
+.pct{color:var(--ok);font-size:11px;font-weight:700}.d{color:var(--mu);font-size:11px}
+.bd{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700}.bd.p{background:#fff1e6;color:var(--wa)}.bd.f{background:#eef2f8;color:var(--mu)}
+.pill{font-size:12px;font-weight:700;padding:5px 12px;border-radius:99px;background:var(--b2);color:var(--b7)}
+#note{display:none;background:#fff8e6;border:1px solid #f5d98b;color:#7a5600;border-radius:12px;padding:10px 14px;margin-bottom:16px;font-size:13px}
+dialog{border:0;border-radius:18px;padding:0;width:min(720px,94vw);box-shadow:0 20px 60px rgba(11,42,91,.35)}
+dialog::backdrop{background:rgba(11,42,91,.5)}
+.mh{background:linear-gradient(135deg,var(--b9),var(--b7));color:#fff;padding:16px 20px}.mh b{font-size:17px}.mb{padding:16px 20px;max-height:65vh;overflow:auto}
+.it{border:1px solid var(--bd);border-radius:12px;padding:10px 12px;margin-bottom:8px}.it h4{margin:0 0 4px;color:var(--b7);font-size:14px}
+footer{text-align:center;color:var(--mu);font-size:12px;padding-bottom:24px}
+@media(max-width:640px){.sr{grid-template-columns:56px 1fr}.sr em{grid-column:1/-1;text-align:left}}
+</style>
+</head>
+<body>
+<header>
+  <div class="l1">Aplikasi Monitoring</div>
+  <div class="l2">Pelatihan Koding dan Kecerdasan Artifisial</div>
+  <div class="l3">BBGTK DIY</div>
+</header>
+<main>
+  <div id="note"></div>
+  <section class="card">
+    <div class="bar">
+      <label class="f grow">Pencarian<input id="q" type="search" placeholder="Cari nama KK, admin LMS, FKK, lokasi, keterangan…"></label>
+      <label class="f">Realisasi s.d. tanggal<input id="cut" type="date"></label>
+      <label class="f">Wilayah<select id="wil"><option value="all">Semua wilayah</option></select></label>
+      <button class="alt" id="today">Hari ini</button>
+      <button id="reload">⟳ Muat ulang</button>
+      <span class="pill" id="src">Memuat…</span>
+    </div>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="card"><h2>Realisasi kehadiran per tahapan <span class="s" id="stgInfo"></span></h2><div id="stg"></div></section>
+
+  <section class="card">
+    <h2>Rincian per Kelompok Kerja (KK) <span class="s" id="cnt"></span></h2>
+    <div class="tw"><table><thead id="th"></thead><tbody id="tb"></tbody></table></div>
+    <p class="s">Klik baris untuk melihat detail lokasi, tanggal, dan keterangan tiap tahapan. L = Luring, D = Daring.</p>
+  </section>
+</main>
+<footer>Aplikasi Monitoring Pelatihan Koding dan Kecerdasan Artifisial · BBGTK DIY</footer>
+<dialog id="dlg"><div class="mh"><b id="dt"></b><div class="s" id="ds" style="color:#cfe0ff"></div></div><div class="mb" id="db"></div><div style="padding:0 20px 16px;text-align:right"><button onclick="dlg.close()">Tutup</button></div></dialog>
+
+<script>
+/* ===== KONFIGURASI ===== */
+const SHEET_ID='12vC-JkScQw3Kj-eKxmI7WsFP6qgdX5FL995z1R0NKZ8';
+const SHEET_GID='';  // kosongkan = sheet (tab) pertama
+const REFRESH_MS=5*60*1000;
+
+/* ===== UTILITAS ===== */
+const $=s=>document.querySelector(s),dlg=$('#dlg');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MON={jan:1,feb:2,mar:3,apr:4,mei:5,may:5,jun:6,jul:7,agu:8,aug:8,sep:9,okt:10,oct:10,nov:11,des:12,dec:12};
+const BL=['','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+const p2=n=>String(n).padStart(2,'0');
+const iso=d=>`${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`;
+const fd=i=>i?`${+i.slice(8)} ${BL[+i.slice(5,7)]} ${i.slice(0,4)}`:'-';
+const fs=i=>i?`${+i.slice(8)} ${BL[+i.slice(5,7)]}`:'';
+function pd(v){ // tanggal teks Indonesia -> ISO; jika ada "menjadi", ambil tanggal terakhir
+  if(v==null||v==='')return null;
+  if(v instanceof Date)return iso(v);
+  if(typeof v==='number')return new Date(Math.round((v-25569)*864e5)).toISOString().slice(0,10);
+  let out=null,y=2026;
+  for(const m of String(v).matchAll(/(\d{1,2})\s*([A-Za-z]{3,})\.?\s*(\d{4})?/g)){
+    const mo=MON[m[2].slice(0,3).toLowerCase()];if(!mo)continue;if(m[3])y=+m[3];out=`${y}-${p2(mo)}-${p2(m[1])}`}
+  return out}
+const num=v=>{const n=parseInt(String(v??'').trim(),10);return isNaN(n)?null:n};
+
+/* ===== PARSER SHEET ===== */
+function parse(rows){
+  const hi=rows.findIndex(r=>r.some(c=>/(^|\s)nama kk$/i.test(String(c??'').trim())));
+  if(hi<0)return{data:[],stages:[]};
+  const H=rows[hi].map(h=>String(h??'').trim().replace(/\s+/g,' '));
+  const ix=n=>{n=n.toLowerCase();const i=H.findIndex(h=>h.toLowerCase()===n);return i>=0?i:H.findIndex(h=>h.toLowerCase().endsWith(' '+n))};
+  const col={kk:ix('KK Di Sindara'),kat:ix('Nama KK'),wil:ix('Wilayah'),ad:ix('Nama Admin LMS'),fkk:ix('Nama FKK'),ku:ix('Kuota Peserta'),up:ix('Peserta Update')};
+  const info={};
+  H.forEach((h,j)=>{ // kolom dikenali dari NAMA judul, bukan urutan (ada kolom tersembunyi di sheet)
+    let m=/(?:^|\s)(Lokasi|Realisasi Kehadiran|Keterangan)\s+([LD])-(\d+)$/i.exec(h);
+    if(m){const k=m[2].toUpperCase()+'-'+m[3],f={'lokasi':'loc','realisasi kehadiran':'h','keterangan':'k'}[m[1].toLowerCase()];(info[k]=info[k]||{})[f]=j;return}
+    m=/(?:^|\s)([LD])-(\d+)$/i.exec(h);
+    if(m){const k=m[1].toUpperCase()+'-'+m[2];(info[k]=info[k]||{}).d=j}});
+  const stages=Object.entries(info).filter(([k,o])=>o.d!=null&&o.h!=null)
+    .map(([k,o])=>({key:k,type:k[0],n:+k.slice(2),d:o.d,h:o.h,loc:o.loc,k:o.k!=null?o.k:o.h+1}))
+    .sort((a,b)=>a.n-b.n||(a.type==='L'?-1:1));
+  const data=[];let ad='';
+  for(const r of rows.slice(hi+1)){
+    const kat=String(r[col.kat]??'').trim(),kk=String(r[col.kk]??'').trim();
+    if(!kat&&!kk)continue;
+    if(String(r[col.ad]??'').trim())ad=String(r[col.ad]).trim();
+    const o={kk:kk||kat,kat:kk?kat:'',wil:String(r[col.wil]??'').trim(),admin:ad,fkk:String(r[col.fkk]??'').replace(/\s+/g,' ').trim(),
+      kuota:num(r[col.ku])||0,upd:num(r[col.up])||0,st:{}};
+    for(const s of stages){const date=pd(r[s.d]);if(!date&&String(r[s.h]??'').trim()==='')continue;
+      o.st[s.key]={date,loc:s.loc!=null?String(r[s.loc]??'').replace(/\s+/g,' ').trim():'',h:num(r[s.h]),ket:String(r[s.k]??'').replace(/\s+/g,' ').trim()}}
+    data.push(o)}
+  return{data,stages}}
+
+/* ===== STATE & RENDER ===== */
+const S={data:[],stages:[],cut:iso(new Date()),stage:'all',wil:'all',q:'',live:false,rows:[]};
+const stat=(r,s)=>{const c=r.st[s.key];if(!c)return null;const past=!c.date||c.date<=S.cut;return c.h!=null&&past?'ok':past?'pending':'plan'};
+const hay=r=>(r.kk+' '+r.kat+' '+r.wil+' '+r.admin+' '+r.fkk+' '+Object.values(r.st).map(c=>c.loc+' '+c.ket).join(' ')).toLowerCase();
+
+function render(){
+  const wsel=$('#wil'),ws=[...new Set(S.data.map(r=>r.wil).filter(Boolean))].sort();
+  wsel.innerHTML='<option value="all">Semua wilayah</option>'+ws.map(w=>`<option ${w===S.wil?'selected':''}>${esc(w)}</option>`).join('');
+  $('#chips').innerHTML='<span class="s">Tahapan:</span>'+[{key:'all'},...S.stages].map(s=>`<span class="chip ${S.stage===s.key?'on':''}" data-k="${s.key}">${s.key==='all'?'Semua tahapan':s.key}</span>`).join('');
+  const q=S.q.toLowerCase();
+  const rows=S.rows=S.data.filter(r=>(S.wil==='all'||r.wil===S.wil)&&(!q||hay(r).includes(q)));
+  const stg=S.stage==='all'?S.stages:S.stages.filter(s=>s.key===S.stage);
+  let hadir=0,cap=0,ok=0,pend=0;const sum=[];
+  for(const s of stg){let h=0,u=0,o=0,p=0,pl=0,dmin='',dmax='';
+    for(const r of rows){const t=stat(r,s);if(!t)continue;const c=r.st[s.key];
+      if(c.date){if(!dmin||c.date<dmin)dmin=c.date;if(c.date>dmax)dmax=c.date}
+      if(t==='ok'){h+=c.h;u+=r.upd;o++}else if(t==='pending')p++;else pl++}
+    if(o+p+pl)sum.push({s,h,u,o,p,pl,dmin,dmax});hadir+=h;cap+=u;ok+=o;pend+=p}
+  const pc=cap?Math.round(hadir/cap*100):0;
+  $('#kpis').innerHTML=[
+   ['Kelompok Kerja (KK)',rows.length,'sesuai filter & pencarian'],
+   ['Peserta terdaftar',rows.reduce((a,r)=>a+r.upd,0),'kuota: '+rows.reduce((a,r)=>a+r.kuota,0)],
+   ['Total kehadiran s.d. '+fs(S.cut),hadir,'akumulasi seluruh pertemuan'],
+   ['Rata-rata kehadiran',pc+'%',ok+' pertemuan terlapor'],
+   ['Belum diisi',pend,'jadwal lewat, realisasi kosong']].map(k=>`<div class="kpi"><small>${k[0]}</small><b>${k[1]}</b><span>${k[2]}</span></div>`).join('');
+  $('#stgInfo').textContent='· s.d. '+fd(S.cut);
+  $('#stg').innerHTML=sum.length?sum.map(x=>{const p=x.u?Math.round(x.h/x.u*100):0;
+   return`<div class="sr" data-k="${x.s.key}"><b>${x.s.key}</b><div class="trk"><i style="width:${Math.min(p,100)}%"></i></div>
+   <em>${x.h} hadir · ${p}% · ${x.o} KK lapor${x.p?` · ${x.p} kosong`:''}${x.pl?` · ${x.pl} terjadwal`:''}<br>${fs(x.dmin)}${x.dmax!==x.dmin?' – '+fs(x.dmax):''}</em></div>`}).join(''):'<p class="s">Tidak ada data tahapan untuk filter ini.</p>';
+  $('#th').innerHTML='<tr><th>No</th><th>Nama KK</th><th>Wilayah</th><th>Admin LMS</th><th>FKK</th><th class="c">Peserta</th>'+stg.map(s=>`<th class="c">${s.key}</th>`).join('')+'</tr>';
+  $('#tb').innerHTML=rows.map((r,i)=>`<tr data-i="${i}"><td>${i+1}</td><td><div class="n">${esc(r.kk)}</div><div class="s">${esc(r.kat)}</div></td><td>${esc(r.wil)}</td><td>${esc(r.admin)}</td><td>${esc(r.fkk)}</td><td class="c">${r.upd}<div class="s">/ ${r.kuota}</div></td>`+
+   stg.map(s=>{const t=stat(r,s),c=r.st[s.key];
+     if(!t)return'<td class="c s">–</td>';
+     if(t==='ok')return`<td class="c"><b>${c.h}</b> <span class="pct">${r.upd?Math.round(c.h/r.upd*100):0}%</span><div class="d">${fs(c.date)}</div></td>`;
+     if(t==='pending')return`<td class="c"><span class="bd p">Belum diisi</span><div class="d">${fs(c.date)}</div></td>`;
+     return`<td class="c"><span class="bd f">Terjadwal</span><div class="d">${fs(c.date)}</div></td>`}).join('')+'</tr>').join('')||'<tr><td colspan="9" class="s">Tidak ada data (atau data sedang dimuat).</td></tr>';
+  $('#cnt').textContent='· '+rows.length+' KK'}
+
+function detail(r){
+  $('#dt').textContent=r.kk;$('#ds').textContent=[r.kat,r.wil].filter(Boolean).join(' · ');
+  $('#db').innerHTML=`<p class="s"><b>Admin LMS:</b> ${esc(r.admin)||'-'}<br><b>FKK:</b> ${esc(r.fkk)||'-'}<br><b>Peserta:</b> ${r.upd} (kuota ${r.kuota})</p>`+
+   S.stages.filter(s=>r.st[s.key]).map(s=>{const c=r.st[s.key],t=stat(r,s);
+    return`<div class="it"><h4>${s.key} · ${s.type==='L'?'Luring':'Daring'} · ${fd(c.date)}</h4>
+    ${c.loc?`📍 ${esc(c.loc)}<br>`:''}Kehadiran: <b>${c.h??'-'}</b>${c.h!=null&&r.upd?` dari ${r.upd} (${Math.round(c.h/r.upd*100)}%)`:''} ${t==='plan'?'<span class="bd f">Terjadwal</span>':t==='pending'?'<span class="bd p">Belum diisi</span>':''}
+    ${c.ket?`<div class="s">Keterangan: ${esc(c.ket)}</div>`:''}</div>`}).join('');
+  dlg.showModal()}
+
+/* ===== PEMUATAN DATA (JSONP Google Visualization: tidak terkena blokir CORS, jalan dari file lokal) ===== */
+function note(t){const n=$('#note');n.style.display=t?'block':'none';n.innerHTML=t}
+function gviz(h){return new Promise((res,rej)=>{
+  const g=(window.google=window.google||{});g.visualization=g.visualization||{};
+  const sc=document.createElement('script');
+  const cleanup=()=>{clearTimeout(t);sc.remove()};
+  const t=setTimeout(()=>{cleanup();rej(new Error('timeout'))},20000);
+  g.visualization.Query={setResponse:r=>{cleanup();res(r)}};
+  sc.onerror=()=>{cleanup();rej(new Error('load'))};
+  sc.src=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&headers=${h}${SHEET_GID?'&gid='+SHEET_GID:''}&_=${Date.now()}`;
+  document.head.appendChild(sc)})}
+function toRows(resp){
+  const labels=resp.table.cols.map(c=>c.label||'');
+  return[labels,...resp.table.rows.map(r=>(r.c||[]).map(c=>c?(c.v!=null?c.v:(c.f??'')):''))]}
+let busy=false;
+async function load(){
+  if(busy)return;busy=true;$('#src').textContent='Memuat data…';
+  try{
+    for(const h of [4,0]){ // 4 = baris judul pada sheet; 0 = cadangan
+      const resp=await gviz(h);if(resp.status==='error')continue;
+      const d=parse(toRows(resp));
+      if(d.data.length&&d.stages.length){S.data=d.data;S.stages=d.stages;S.live=true;
+        $('#src').textContent='● Google Sheet · '+d.data.length+' KK · '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+        note('');render();busy=false;return}}
+    throw new Error('format')
+  }catch(e){
+    $('#src').textContent='Gagal memuat data';
+    note('<b>Data Google Sheet belum dapat dibaca.</b> Pastikan komputer terhubung internet dan sheet dibagikan dengan akses <i>Siapa saja yang memiliki link (Pelihat)</i>, lalu klik <b>Muat ulang</b>.'+(S.data.length?' Data yang tampil adalah pemuatan terakhir yang berhasil.':''));
+    render()}
+  busy=false}
+
+/* ===== EVENT ===== */
+$('#q').oninput=e=>{S.q=e.target.value.trim();render()};
+$('#cut').value=S.cut;$('#cut').onchange=e=>{S.cut=e.target.value||S.cut;render()};
+$('#today').onclick=()=>{S.cut=iso(new Date());$('#cut').value=S.cut;render()};
+$('#wil').onchange=e=>{S.wil=e.target.value;render()};
+$('#reload').onclick=load;
+$('#chips').onclick=e=>{const k=e.target.dataset.k;if(k){S.stage=k;render()}};
+$('#stg').onclick=e=>{const k=e.target.closest('.sr')?.dataset.k;if(k){S.stage=S.stage===k?'all':k;render()}};
+$('#tb').onclick=e=>{const i=e.target.closest('tr')?.dataset.i;if(i!=null)detail(S.rows[i])};
+render();load();setInterval(()=>{if(S.live)load()},REFRESH_MS);
+</script>
+</body>
+</html>
